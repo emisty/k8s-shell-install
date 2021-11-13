@@ -2,3 +2,8 @@ kubeadm_install/install_k8s/
 kubeadm_install/install_tools/
 kubeadm_install/install_docker/
 binary_install/k8sbinary/
+binary_install/cfssl/
+binary_install/pki/
+binary_install/etcd/
+binary_install/work/
+binary_install/docker/
