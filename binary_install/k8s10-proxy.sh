@@ -89,7 +89,7 @@ After=network.target
 [Service]
 WorkingDirectory=/var/lib/kube-proxy
 ExecStart=/usr/local/bin/kube-proxy \
-  --config=$NOWPATH/pki/kube-proxy.yaml \
+  --config=$NOWPATH/pki/kube-proxy.yml \
   --alsologtostderr=true \
   --logtostderr=false \
   --log-dir=/var/log/kubernetes/kube-proxy \

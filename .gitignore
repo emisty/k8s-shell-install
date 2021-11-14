@@ -7,3 +7,4 @@ binary_install/pki/
 binary_install/etcd/
 binary_install/work/
 binary_install/docker/
+binary_install/cni/

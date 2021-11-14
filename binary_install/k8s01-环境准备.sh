@@ -135,6 +135,13 @@ mkdir -p $NOWPATH/work
 log "放CA证书"
 mkdir -p $NOWPATH/pki
 
+log "放cni"
+mkdir -p /etc/cni/net.d
+mkdir -p $NOWPATH/cni/unzip
+tar -zxvf $NOWPATH/cni/cni-plugins-linux-amd64-v0.9.1.tgz -C $NOWPATH/cni/unzip
+
+mv $NOWPATH/cni/unzip/* /etc/cni/net.d/
+
 log "安装同步软件"
 yum install -y rsync
 

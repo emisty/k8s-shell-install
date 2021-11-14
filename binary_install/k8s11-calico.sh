@@ -31,7 +31,6 @@ function log() {
 
 cd $NOWPATH/coredns
 kubectl delete -f calico.yaml
-kubectl delete -f coredns.yaml
 
 rm -rf /run/calico \
 /sys/fs/bpf/calico \
@@ -41,9 +40,6 @@ rm -rf /run/calico \
 /opt/cluster/plugins/calico \
 /opt/cni/bin/calico \
 /etc/cni/net.d
-
-systemctl daemon-reload
-systemctl restart kubelet.service
 
 
 # ETCD 地址
@@ -110,22 +106,5 @@ kubectl apply -f $NOWPATH/coredns/calico.yaml
 
 #查看calico日志
 #tail -f /var/log/calico/cni/cni.log
-
-
-
-#log "安装coredns"
-#curl https://docs.projectcalico.org/manifests/calico-etcd.yaml -o calico.yaml
-#https://github.com/coredns/deployment/blob/master/kubernetes/coredns.yaml.sed
-kubectl apply -f $NOWPATH/coredns/coredns.yaml
-
-#log "kubectl get pods -n kube-system"
-#动态查看
-#kubectl get pods -n kube-system -w
-#查看ip
-#kubectl get pods -n kube-system -o wide
-#强制删除
-#kubectl delete --force --grace-period=0  pod coredns-86f4cdc7bc-qttsq -n kube-system 
-
-
 
 

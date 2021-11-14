@@ -94,6 +94,9 @@ log "生成kubelet.service服务文件"
 mkdir -p /var/lib/kubelet
 mkdir -p /var/log/kubernetes/kubelet
 #kubeconfig空目录
+rm -rf $NOWPATH/work/kubelet.service
+rm -rf /usr/lib/systemd/system/kubelet.service
+
 cat > $NOWPATH/work/kubelet.service << EOF
 [Unit]
 Description=Kubernetes Kubelet
@@ -110,8 +113,7 @@ ExecStart=/usr/local/bin/kubelet \
   --config=$NOWPATH/pki/kubelet-config.yml \
   --pod-infra-container-image=k8s.gcr.io/pause:3.4.1 \
   --alsologtostderr=true \
-  --network-plugin=cni
-  --cni-bin-dir=/usr/k8s/cni
+  --network-plugin=cni \
   --logtostderr=false \
   --log-dir=/var/log/kubernetes \
   --v=4
@@ -126,7 +128,7 @@ EOF
 
 log "kube-kubelet.service放到system目录"
 chmod -R 777 $NOWPATH/work/kubelet.service 
-cp $NOWPATH/work/kubelet.service /usr/lib/systemd/system/
+cp -r $NOWPATH/work/kubelet.service /usr/lib/systemd/system/
 
 
 log "拷贝kube-kubelet配置文件到子节点"
@@ -175,3 +177,4 @@ log "kubectl certificate approve 你的node"
 
 # kubectl apply -f $NOWPATH/pki/kubelet-bootstrap-rbac.yaml
 
+log "journalctl -xe"

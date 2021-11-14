@@ -92,12 +92,13 @@ log "kube-scheduler 要手动去启动一下节点的api"
 systemctl daemon-reload
 systemctl enable kube-scheduler.service
 systemctl restart kube-scheduler.service
-#systemctl status kube-scheduler.service
+systemctl status kube-scheduler.service
 
 
 log "  systemctl daemon-reload
   systemctl enable kube-scheduler.service
-  systemctl restart kube-scheduler.service"
+  systemctl restart kube-scheduler.service
+  systemctl status kube-scheduler.service"
 
 log "kube-scheduler 如果还有不健康的，去手动启动一下"
 kubectl get cs

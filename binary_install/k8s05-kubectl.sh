@@ -64,5 +64,6 @@ kubectl cluster-info
 kubectl get componentstatuses
 kubectl get nodes
 kubectl get csr
+kubectl get all --all-namespaces
 
 
