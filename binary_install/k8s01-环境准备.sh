@@ -1,9 +1,12 @@
 #!/bin/bash
 #该shell脚本是 二进制安装k8s的文件，有国内安装k8s的方法
-#centos 8.4
+#centos 7.9
 #3台服务器都要执行,3台执行完，之后在运行后面的
 #主服务器需要完整的文件目录结构，并且下载好相关的安装包，脚本自动拷贝到子节点
-#IP规划为pod全用10.80.0.0/16段, service的IP段为10.90.0.0/16段
+#IP规划为pod全用10.97.0.0/16段, service的IP段为10.96.0.0/16段
+#calico--  - name: CALICO_IPV4POOL_CIDR value: "10.97.0.0/16"
+#coredns     k8s-app: kube-dns clusterIP: 10.96.0.10
+
 
 #文件目录
 #centos8_k8s_install
@@ -25,6 +28,8 @@ N2=node2
 IP3=192.168.0.20
 N3=node3
 VIP=192.168.0.100
+SERIP=10.96.0.0/16
+CLUSTERIP=10.97.0.0/16
 
 echo "centos8 同步网络时间"
 cat << EOF >> /etc/chrony.conf

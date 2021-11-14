@@ -98,7 +98,7 @@ log "进入etcd下载路径"
 cd $NOWPATH/etcd
 #https://github.com/etcd-io/etcd/releases/tag/v3.5.0
 if [ ! -f "etcd-v3.5.0-linux-amd64.tar.gz" ];then
-  log "请手动下载etcd-v3.5.0"s
+  log "请手动下载etcd-v3.5.0"
   exit
 fi
 

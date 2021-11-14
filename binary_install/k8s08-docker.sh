@@ -16,6 +16,13 @@ function log() {
 
 cd $NOWPATH/docker/
 
+sudo yum remove -y containerd.io
+sleep 1
+sudo yum remove -y docker-ce-cli docker-scan-plugin
+sleep 1
+sudo yum remove -y docker-ce docker-ce-rootless-extras
+
+
 log "进入docker安装进程"
 sudo yum install -y containerd.io-1.4.9-3.1.el7.x86_64.rpm
 sleep 1

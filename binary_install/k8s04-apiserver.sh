@@ -8,6 +8,9 @@ IP1=192.168.0.27
 IP2=192.168.0.19
 IP3=192.168.0.20
 VIP=192.168.0.100
+SERIP=10.96.0.0/16
+SERIP1=10.96.0.1
+
 NOWPATH=$(cd `dirname $0`; pwd)
 now=`date +%s`
 function log() {
@@ -27,7 +30,7 @@ cat > $NOWPATH/pki/kube-apiserver-csr.json << EOF
     "$IP2",
     "$IP3",
     "$VIP",
-    "10.90.0.1",
+    "$SERIP1",
     "kubernetes",
     "kubernetes.default",
     "kubernetes.default.svc",
@@ -87,7 +90,7 @@ ExecStart=/usr/local/bin/kube-apiserver --logtostderr=false \
   --anonymous-auth=false \
   --allow-privileged=true \
   --runtime-config=api/all=true \
-  --service-cluster-ip-range=10.90.0.0/24 \
+  --service-cluster-ip-range=$SERIP \
   --enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,ResourceQuota,NodeRestriction,DefaultStorageClass \
   --enable-bootstrap-token-auth \
   --token-auth-file=$NOWPATH/pki/token.csv \

@@ -8,6 +8,8 @@ IP1=192.168.0.27
 IP2=192.168.0.19
 IP3=192.168.0.20
 VIP=192.168.0.100
+SERIP=10.96.0.0/16
+CLUSTERIP=10.97.0.0/16
 NOWPATH=$(cd `dirname $0`; pwd)
 now=`date +%s`
 function log() {
@@ -88,12 +90,12 @@ Documentation=https://github.com/kubernetes/kubernetes
 [Service]
 ExecStart=/usr/local/bin/kube-controller-manager \
   --kubeconfig=$NOWPATH/work/kube-controller-manager.kubeconfig \
-  --service-cluster-ip-range=10.90.0.0/16 \
+  --service-cluster-ip-range=$SERIP \
   --cluster-name=kubernetes \
   --cluster-signing-cert-file=$NOWPATH/pki/ca.pem \
   --cluster-signing-key-file=$NOWPATH/pki/ca-key.pem \
   --allocate-node-cidrs=true \
-  --cluster-cidr=10.80.0.0/16  \
+  --cluster-cidr=$CLUSTERIP  \
   --root-ca-file=$NOWPATH/pki/ca.pem  \
   --service-account-private-key-file=$NOWPATH/pki/ca-key.pem \
   --leader-elect=false \

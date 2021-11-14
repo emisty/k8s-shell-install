@@ -119,4 +119,13 @@ kubectl apply -f $NOWPATH/coredns/calico.yaml
 kubectl apply -f $NOWPATH/coredns/coredns.yaml
 
 #log "kubectl get pods -n kube-system"
+#动态查看
 #kubectl get pods -n kube-system -w
+#查看ip
+#kubectl get pods -n kube-system -o wide
+#强制删除
+#kubectl delete --force --grace-period=0  pod coredns-86f4cdc7bc-qttsq -n kube-system 
+
+
+
+

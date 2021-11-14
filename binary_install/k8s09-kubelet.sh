@@ -8,6 +8,9 @@ IP1=192.168.0.27
 IP2=192.168.0.19
 IP3=192.168.0.20
 VIP=192.168.0.100
+SERIP=10.96.0.0/16
+SERIP10=10.96.0.10
+
 NOWPATH=$(cd `dirname $0`; pwd)
 now=`date +%s`
 function log() {
@@ -61,8 +64,8 @@ port: 10250
 readOnlyPort: 10255
 cgroupDriver: systemd
 clusterDNS:
-- 10.90.0.10
-clusterDomain: cluster.local.
+- $SERIP10
+clusterDomain: cluster.local
 failSwapOn: false
 authentication:
   anonymous:
