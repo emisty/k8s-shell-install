@@ -1,5 +1,5 @@
 #!/bin/bash
-#该shell脚本是 kubeadm安装 k8s的文件，有国内安装k8s的方法
+#该shell脚本是 kubeadm安装 k8s的文件
 #centos 8.4
 #该脚本需要在主节点运行
 
