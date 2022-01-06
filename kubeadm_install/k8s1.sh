@@ -3,17 +3,18 @@
 #centos 8.4
 #该脚本需要在每个节点运行
 
-#多层注释不能用数字
-<<download_docker
+#多层注释不能用数字 <<这个是sh脚本的多层注释，不执行
+#查看版本号
+<<check_release
 #cat  /etc/redhat-release
 #uname -a
 #查看你要的版本docker1.19版本 这里下载好上传文件
 #https://download.docker.com/linux/centos/
-download_docker
+check_release
 
 #需要一个香港的服务器 centos 8.4
-<<download_kstools
 #下载k8s rpm工具包 
+<<download_kstools
 yum install yum-utils -y
 
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo 
@@ -167,6 +168,8 @@ systemctl enable docker.service
 docker info | grep Cgroup
 
 cd ../install_tools
+
+log "rpm工具包安装"
 
 if [ -f "socat-1.7.3.3-2.el8.x86_64.rpm" ];then
 	log "自己下载 安装工具包 kubelet kubeadm kubectl"
