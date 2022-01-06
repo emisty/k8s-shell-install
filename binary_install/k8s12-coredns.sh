@@ -5,10 +5,14 @@
 N1=node1
 N2=node2
 N3=node3
-IP1=192.168.0.27
-IP2=192.168.0.19
-IP3=192.168.0.20
+
+IP1=192.168.0.131
+IP2=192.168.0.11
+IP3=192.168.0.232
 VIP=192.168.0.100
+SERIP=10.96.0.0/16
+CLUSTERIP=10.97.0.0/16
+
 NOWPATH=$(cd `dirname $0`; pwd)
 now=`date +%s`
 function log() {
