@@ -7,11 +7,14 @@ now=`date +%s`
 function log() {
   echo "[$((`date +%s` - now ))]  $@"
 }
+NOWPATH=$(cd `dirname $0`; pwd)
+k8s_version="v1.23.1"
+
 
 log "kubadm安装k8s2开始 "
 sudo kubeadm reset
-log "k8s 初始化... "
-sudo kubeadm init --kubernetes-version=v1.22.3 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 
+log "k8s 初始化..."
+sudo kubeadm init --kubernetes-version=$k8s_version --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 
 
 log "复制k8s配置文件"
 
@@ -33,7 +36,7 @@ sysctl --system
 
 log "k8s 用flannel作为网络规划服务"
 cd install_k8s
-kubectl apply -f kube-flannel.yml
+kubectl apply -f $NOWPATH/kube-flannel.yml
 
 log "生成加入k8s节点的token"
 kubeadm token create --print-join-command --ttl 0

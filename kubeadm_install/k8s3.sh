@@ -1,6 +1,6 @@
 #!/bin/bash
-#该shell脚本是 kubeadm安装 k8s的文件，有国内安装k8s的方法
-#centos 8.4
+#该shell脚本是 kubeadm安装 k8s的文件
+#centos 7.9
 <<recommend_yaml
 #增加直接访问端口
 kind: Service
